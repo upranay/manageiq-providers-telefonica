@@ -64,7 +64,7 @@ module TelefonicaHandle
         :telefonica_username      => username,
         :telefonica_api_key       => password,
         :telefonica_domain_name   => 'Huawei China',
-        :telefonica_project_name  => 'sa-brazil-1', # added by c2c Team 23-08-18 13:19 sa-brazil-1_c2c_miq
+        # :telefonica_project_name  => 'sa-brazil-1', # added by c2c Team 23-08-18 13:19 sa-brazil-1_c2c_miq
         :telefonica_endpoint_type => 'publicURL',
       }
       opts.merge!(extra_opts) if extra_opts
