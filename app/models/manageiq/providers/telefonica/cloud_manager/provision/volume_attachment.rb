@@ -1,6 +1,6 @@
 module ManageIQ::Providers::Telefonica::CloudManager::Provision::VolumeAttachment
   def create_requested_volumes(requested_volumes)
-    volumes_attrs_list = [default_volume_attributes]
+    volumes_attrs_list = []
 
     connection_options = {:service => "volume", :tenant_name => cloud_tenant.try(:name)}
     source.ext_management_system.with_provider_connection(connection_options) do |service|
