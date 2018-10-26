@@ -53,7 +53,7 @@ class ManageIQ::Providers::Telefonica::Inventory::Collector::CloudManager < Mana
   def images
     return @images if @images.any?
     @images = if telefonica_admin?
-                image_service.handled_list(:images, {}, true).all
+                image_service.images_with_pagination_loop
               else
                 image_service.handled_list(:images)
               end
