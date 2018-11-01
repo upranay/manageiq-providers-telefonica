@@ -83,6 +83,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::NetworkRouter < ::Network
   end
 
   def raw_update_network_router(options)
+    options.reject! { |k| k == :external_gateway_info }
     ext_management_system.with_provider_connection(connection_options(cloud_tenant)) do |service|
       service.update_router(ems_ref, options)
     end
