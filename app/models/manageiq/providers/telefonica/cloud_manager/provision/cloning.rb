@@ -37,8 +37,7 @@ module ManageIQ::Providers::Telefonica::CloudManager::Provision::Cloning
     clone_options[:security_groups]   = security_groups.collect(&:ems_ref)
     clone_options[:nics]              = configure_network_adapters if configure_network_adapters.present?
 
-    #C2C comment
-    #clone_options[:block_device_mapping_v2] = configure_volumes if configure_volumes.present?
+    clone_options[:block_device_mapping_v2] = configure_volumes if configure_volumes.present?
 
     clone_options
   end
