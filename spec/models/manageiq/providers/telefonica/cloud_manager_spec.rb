@@ -24,10 +24,6 @@ describe ManageIQ::Providers::Telefonica::CloudManager do
     expect(ems.cinder_manager.zone_id).to eq zone1.id
     expect(ems.cinder_manager.provider_region).to eq "region1"
 
-    expect(ems.swift_manager.zone).to eq zone1
-    expect(ems.swift_manager.zone_id).to eq zone1.id
-    expect(ems.swift_manager.provider_region).to eq "region1"
-
     ems.zone = zone2
     ems.provider_region = "region2"
     ems.save!
@@ -40,10 +36,6 @@ describe ManageIQ::Providers::Telefonica::CloudManager do
     expect(ems.cinder_manager.zone).to eq zone2
     expect(ems.cinder_manager.zone_id).to eq zone2.id
     expect(ems.cinder_manager.provider_region).to eq "region2"
-
-    expect(ems.swift_manager.zone).to eq zone2
-    expect(ems.swift_manager.zone_id).to eq zone2.id
-    expect(ems.swift_manager.provider_region).to eq "region2"
   end
 
   describe ".metrics_collector_queue_name" do
@@ -166,7 +158,6 @@ describe ManageIQ::Providers::Telefonica::CloudManager do
 
   context "provider hooks" do
     it "related EmsTelefonica and ProviderTelefonica are left around on EmsTelefonicaCloud destroy" do
-      @ems = FactoryGirl.create(:ems_telefonica_infra_with_authentication)
       @ems_cloud = FactoryGirl.create(:ems_telefonica_with_authentication)
       @ems.provider.cloud_ems << @ems_cloud
 
