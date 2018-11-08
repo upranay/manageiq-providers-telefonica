@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class OrchestrationDelegate < DelegateClass(Fog::Orchestration::Telefonica)
+  class OrchestrationDelegate < DelegateClass(Fog::Orchestration::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 
@@ -16,7 +16,7 @@ module TelefonicaHandle
     def stacks_for_accessible_tenants(opts = {})
       ra = []
       @os_handle.service_for_each_accessible_tenant(SERVICE_NAME) do |svc|
-        not_found_error = Fog.const_get(SERVICE_NAME)::Telefonica::NotFound
+        not_found_error = Fog.const_get(SERVICE_NAME)::OpenStack::NotFound
 
         rv = begin
           svc.stacks.all(opts)

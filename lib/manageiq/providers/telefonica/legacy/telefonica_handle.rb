@@ -1,4 +1,4 @@
-require 'fog/telefonica'
+require 'fog/openstack'
 
 require 'manageiq/providers/telefonica/legacy/telefonica_handle/handled_list'
 require 'manageiq/providers/telefonica/legacy/telefonica_handle/handle'

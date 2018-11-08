@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class IdentityDelegate < DelegateClass(Fog::Identity::Telefonica)
+  class IdentityDelegate < DelegateClass(Fog::Identity::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 
@@ -35,7 +35,7 @@ module TelefonicaHandle
     #
     def visible_tenants_v2
       response = Handle.try_connection(@os_handle.security_protocol) do |scheme, connection_options|
-        url = Handle.auth_url(@os_handle.address, @os_handle.port, scheme, "/v2.0/tenants")
+        url = Handle.url(@os_handle.address, @os_handle.port, scheme, "/v2.0/tenants")
         connection = Fog::Core::Connection.new(url, false, connection_options)
         response = connection.request(
           :expects => [200, 204],
@@ -46,7 +46,7 @@ module TelefonicaHandle
         )
       end
       body = Fog::JSON.decode(response.body)
-      vtenants = Fog::Identity::Telefonica::V2::Tenants.new
+      vtenants = Fog::Identity::OpenStack::V2::Tenants.new
       vtenants.load(body['tenants'])
       vtenants
     end

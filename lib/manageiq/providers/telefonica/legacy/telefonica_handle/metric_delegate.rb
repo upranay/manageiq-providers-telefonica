@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class MetricDelegate < DelegateClass(Fog::Metric::Telefonica)
+  class MetricDelegate < DelegateClass(Fog::Metric::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 

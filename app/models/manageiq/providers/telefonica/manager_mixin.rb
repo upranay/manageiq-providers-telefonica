@@ -12,18 +12,7 @@ module ManageIQ::Providers::Telefonica::ManagerMixin
   # Telefonica interactions
   #
   module ClassMethods
-    def amqp_available?(params)
-      require 'manageiq/providers/telefonica/legacy/events/telefonica_rabbit_event_monitor'
-      TelefonicaRabbitEventMonitor.available?(
-          :hostname => params[:amqp_hostname],
-          :username => params[:amqp_userid],
-          :password => params[:amqp_password],
-          :port     => params[:amqp_api_port]
-      )
-    end
-    private :amqp_available?
-
-    def ems_connect?(password, params, service)
+    def raw_connect(password, params, service = "Compute")
       ems = new
       ems.name                   = params[:name].strip
       ems.provider_region        = params[:provider_region]
@@ -51,16 +40,6 @@ module ManageIQ::Providers::Telefonica::ManagerMixin
       end
     end
 
-    private :ems_connect?
-
-    def raw_connect(password, params, service = "Compute")
-      if params[:cred_type] == 'amqp'
-        amqp_available?(params)
-      else
-        ems_connect?(password, params, service)
-      end
-    end
-
     def translate_exception(err)
       require 'excon'
       case err
@@ -70,7 +49,7 @@ module ManageIQ::Providers::Telefonica::ManagerMixin
         MiqException::MiqUnreachableError.new("Login attempt timed out")
       when Excon::Errors::SocketError
         MiqException::MiqHostError.new("Socket error: #{err.message}")
-      when MiqException::MiqInvalidCredentialsError, MiqException::MiqHostError, MiqException::ServiceNotAvailable
+      when MiqException::MiqInvalidCredentialsError, MiqException::MiqHostError
         err
       else
         MiqException::MiqEVMLoginError.new("Unexpected response returned from system: #{parse_error_message_from_fog_response(err)}")

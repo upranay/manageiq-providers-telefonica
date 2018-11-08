@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class NetworkDelegate < DelegateClass(Fog::Network::Telefonica)
+  class NetworkDelegate < DelegateClass(Fog::Network::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 

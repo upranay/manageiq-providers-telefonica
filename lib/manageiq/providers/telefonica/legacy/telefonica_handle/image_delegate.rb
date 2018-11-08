@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class ImageDelegate < DelegateClass(Fog::Image::Telefonica)
+  class ImageDelegate < DelegateClass(Fog::Image::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 
@@ -16,9 +16,9 @@ module TelefonicaHandle
 
     def version
       case @delegated_object
-      when Fog::Image::Telefonica::V1::Real
+      when Fog::Image::OpenStack::V1::Real
         :v1
-      when Fog::Image::Telefonica::V2::Real
+      when Fog::Image::OpenStack::V2::Real
         :v2
       else
         raise "Non supported Glance version #{@delegated_object.class.name}"

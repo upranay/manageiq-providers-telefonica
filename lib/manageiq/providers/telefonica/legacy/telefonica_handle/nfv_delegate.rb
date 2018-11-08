@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class NFVDelegate < DelegateClass(Fog::NFV::Telefonica)
+  class NFVDelegate < DelegateClass(Fog::NFV::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 

@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class EventDelegate < DelegateClass(Fog::Event::Telefonica)
+  class EventDelegate < DelegateClass(Fog::Event::OpenStack)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 

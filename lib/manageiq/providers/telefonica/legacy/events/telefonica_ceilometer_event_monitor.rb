@@ -101,9 +101,9 @@ class TelefonicaCeilometerEventMonitor < TelefonicaEventMonitor
   def list_events(query_options)
     provider_connection.list_events(query_options).body.map do |event_hash|
       begin
-        Fog::Event::Telefonica::Event.new(event_hash)
+        Fog::Event::OpenStack::Event.new(event_hash)
       rescue NameError
-        Fog::Metering::Telefonica::Event.new(event_hash)
+        Fog::Metering::OpenStack::Event.new(event_hash)
       end
     end
   end
