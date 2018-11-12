@@ -33,7 +33,6 @@ module ManageIQ::Providers
           :volume_type   => volume.volume_type,
           :snapshot_uid  => volume.snapshot_id,
           :size          => volume.size.to_i.gigabytes,
-
           # Temporarily add the object from the API to the hash - for the cross-linkers.
           :api_obj       => volume
       }
