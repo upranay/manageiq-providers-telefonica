@@ -237,7 +237,7 @@ describe ManageIQ::Providers::Telefonica::CloudManager::ProvisionWorkflow do
           provider.availability_zones << FactoryGirl.create(:availability_zone_telefonica_null, :ems_ref => "null_az")
 
           azs = workflow.allowed_availability_zones
-          expect(azs.length).to eq(1)
+          expect(azs.length).to eq(2)
           expect(azs.first).to eq([az.id, az.name])
         end
 

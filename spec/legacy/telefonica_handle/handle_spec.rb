@@ -12,7 +12,7 @@ describe TelefonicaHandle::Handle do
   end
 
   it ".url" do
-    expect(described_class.url("::1")).to eq "http://[::1]:5000"
+    expect(described_class.url("::1")).to eq "http://[::1]"
   end
 
   context "errors from services" do
@@ -46,15 +46,18 @@ describe TelefonicaHandle::Handle do
     it "handles default ssl type connections just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address")
-      auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
                                            "dummy",
-                                           "https://address:5000/v2.0/tokens",
+                                           nil,
+                                           nil,
+                                           "https://address/v2.0/tokens",
                                            "Compute",
                                            {:telefonica_tenant       => "admin",
-                                            :telefonica_project_name => "admin",
+                                            :telefonica_project_name => nil,
                                             :telefonica_project_domain_id => nil,
                                             :telefonica_user_domain_id    => nil,
                                             :telefonica_region       => nil,
@@ -69,15 +72,18 @@ describe TelefonicaHandle::Handle do
     it "handles non ssl connections just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'non-ssl')
-      auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
+      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
+      auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
                                            "dummy",
-                                           "http://address:5000/v2.0/tokens",
+                                            nil,
+                                            nil,
+                                           "http://address/v2.0/tokens",
                                            "Compute",
                                            {:telefonica_tenant       => "admin",
-                                            :telefonica_project_name => "admin",
+                                            :telefonica_project_name => nil,
                                             :telefonica_project_domain_id => nil,
                                             :telefonica_user_domain_id    => nil,
                                             :telefonica_region       => nil,
@@ -92,15 +98,18 @@ describe TelefonicaHandle::Handle do
     it "handles ssl connections just fine, too" do
       fog            = double('fog')
       handle         = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl')
-      auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      # auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      auth_url_ssl   = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
                                            "dummy",
-                                           "https://address:5000/v2.0/tokens",
+                                           nil,
+                                           nil,
+                                           "https://address/v2.0/tokens",
                                            "Compute",
                                            {:telefonica_tenant       => "admin",
-                                            :telefonica_project_name => "admin",
+                                            :telefonica_project_name => nil,
                                             :telefonica_project_domain_id => nil,
                                             :telefonica_user_domain_id    => nil,
                                             :telefonica_region       => nil,
@@ -115,15 +124,18 @@ describe TelefonicaHandle::Handle do
     it "handles ssl with validation connections just fine, too" do
       fog            = double('fog')
       handle         = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl-with-validation')
-      auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      # auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      auth_url_ssl = nil;
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
                                            "dummy",
-                                           "https://address:5000/v2.0/tokens",
+                                           nil,
+                                           nil,
+                                           "https://address/v2.0/tokens",
                                            "Compute",
                                            {:telefonica_tenant       => "admin",
-                                            :telefonica_project_name => "admin",
+                                            :telefonica_project_name => nil,
                                             :telefonica_project_domain_id => nil,
                                             :telefonica_user_domain_id    => nil,
                                             :telefonica_region       => nil,
@@ -144,7 +156,7 @@ describe TelefonicaHandle::Handle do
       }
 
       expected_options = {:telefonica_tenant       => "admin",
-                          :telefonica_project_name => "admin",
+                          :telefonica_project_name => nil,
                           :telefonica_project_domain_id => nil,
                           :telefonica_user_domain_id    => nil,
                           :telefonica_region       => nil,
@@ -159,7 +171,9 @@ describe TelefonicaHandle::Handle do
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
                                            "dummy",
-                                           "https://address:5000/v2.0/tokens",
+                                           nil,
+                                           nil,
+                                           "https://address/v2.0/tokens",
                                            "Compute",
                                            expected_options
                                            ) do |_, _, address|
@@ -175,15 +189,18 @@ describe TelefonicaHandle::Handle do
     it "handles connections with region just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'non-ssl', :region => 'RegionOne')
-      auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
+      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
+      auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
         "dummy",
         "dummy",
-        "http://address:5000/v2.0/tokens",
+        nil,
+        nil,
+        "http://address/v2.0/tokens",
         "Compute",
         :telefonica_tenant       => "admin",
-        :telefonica_project_name => "admin",
+        :telefonica_project_name => nil,
         :telefonica_project_domain_id => nil,
         :telefonica_user_domain_id    => nil,
         :telefonica_region       => 'RegionOne',

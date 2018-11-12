@@ -47,7 +47,7 @@ describe ManageIQ::Providers::Telefonica::CloudManager::Provision do
 
     context "availability zone" do
       let(:az)      { FactoryGirl.create(:availability_zone_telefonica,      :ems_ref => "64890ac2-6c34-11e4-b72d-56847afe9799") }
-      let(:az_null) { FactoryGirl.create(:availability_zone_telefonica_null, :ems_ref => "6fd878d6-6c34-11e4-b72d-56847afe9799") }
+      let(:az_null) { FactoryGirl.create(:availability_zone_telefonica_null, :ems_ref => nil) }
 
       it "with valid Availability Zone" do
         subject.options[:dest_availability_zone] = [az.id, az.name]
