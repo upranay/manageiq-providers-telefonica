@@ -166,7 +166,8 @@ describe TelefonicaHandle::Handle do
                                                       :ssl_cert_store  => "store_obj"}}
 
       handle           = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl-with-validation', extra_options)
-      auth_url_ssl     = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      # auth_url_ssl     = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
+      auth_url_ssl     = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
                                            "dummy",
