@@ -33,12 +33,11 @@ module ManageIQ::Providers::Telefonica::CloudManager::Provision::Cloning
     clone_options[:name]              = dest_name
     clone_options[:image_ref]         = source.ems_ref
     clone_options[:flavor_ref]        = instance_type.ems_ref
-    clone_options[:availability_zone] = nil if dest_availability_zone.kind_of?(ManageIQ::Providers::Telefonica::CloudManager::AvailabilityZoneNull)
+    # clone_options[:availability_zone] = nil if dest_availability_zone.kind_of?(ManageIQ::Providers::Telefonica::CloudManager::AvailabilityZoneNull)
     clone_options[:security_groups]   = security_groups.collect(&:ems_ref)
     clone_options[:nics]              = configure_network_adapters if configure_network_adapters.present?
 
-    #C2C comment
-    #clone_options[:block_device_mapping_v2] = configure_volumes if configure_volumes.present?
+    clone_options[:block_device_mapping_v2] = configure_volumes if configure_volumes.present?
 
     clone_options
   end

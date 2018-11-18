@@ -50,9 +50,9 @@ class ManageIQ::Providers::Telefonica::Inventory::Parser::CloudManager < ManageI
       availability_zone.name = az.zoneName
     end
     # ensure the null az exists
-    null_az = persister.availability_zones.find_or_build("null_az")
-    null_az.type = "ManageIQ::Providers::Telefonica::CloudManager::AvailabilityZoneNull"
-    null_az.ems_ref = "null_az"
+    # null_az = persister.availability_zones.find_or_build("null_az")
+    # null_az.type = "ManageIQ::Providers::Telefonica::CloudManager::AvailabilityZoneNull"
+    # null_az.ems_ref = "null_az"
   end
 
   def cloud_services

@@ -24,12 +24,12 @@ describe ManageIQ::Providers::Telefonica::CloudManager::Provision::VolumeAttachm
         .with(:service => 'volume', :tenant_name => nil).and_yield(service)
       allow(@task).to receive(:instance_type).and_return @flavor
 
-      default_volume = {:name => "root", :size => 1, :source_type => "image", :destination_type => "local",
-                        :boot_index => 0, :delete_on_termination => true, :uuid => nil}
+      # default_volume = {:name => "root", :size => 1, :source_type => "image", :destination_type => "local",
+      #                   :boot_index => 0, :delete_on_termination => true, :uuid => nil}
       requested_volume = {:name => "custom_volume_1", :size => 2, :uuid => @volume.id, :source_type => "volume",
                           :destination_type => "volume"}
 
-      expect(@task.create_requested_volumes(@task.options[:volumes])).to eq [default_volume, requested_volume]
+      expect(@task.create_requested_volumes(@task.options[:volumes])).to eq [requested_volume]
     end
   end
 

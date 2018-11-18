@@ -134,10 +134,10 @@ describe ManageIQ::Providers::Telefonica::CloudManager::Refresher do
       volumes_and_snapshots_plus_disconnect_inv = volumes_and_snapshots_count + test_counts(disconnect)[:volume_templates_count] + test_counts(disconnect)[:volume_snapshot_templates_count]
       {
         :auth_private_key              => test_counts(@data_scaling)[:key_pairs_count],
-        :ext_management_system         => 4,
+        :ext_management_system         => 3,
         :flavor                        => test_counts(@data_scaling)[:flavors_count],
         :host_aggregate                => test_counts(@data_scaling)[:host_aggregates_count],
-        :availability_zone             => 2,
+        :availability_zone             => 1,
         :vm_or_template                => vm_count_plus_disconnect_inv + image_count_plus_disconnect_inv + volumes_and_snapshots_plus_disconnect_inv,
         :vm                            => vm_count_plus_disconnect_inv,
         :miq_template                  => image_count_plus_disconnect_inv + volumes_and_snapshots_plus_disconnect_inv,
