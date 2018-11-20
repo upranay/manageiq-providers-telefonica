@@ -46,7 +46,6 @@ describe TelefonicaHandle::Handle do
     it "handles default ssl type connections just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address")
-      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
       auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
@@ -72,7 +71,6 @@ describe TelefonicaHandle::Handle do
     it "handles non ssl connections just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'non-ssl')
-      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
       auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
@@ -98,7 +96,6 @@ describe TelefonicaHandle::Handle do
     it "handles ssl connections just fine, too" do
       fog            = double('fog')
       handle         = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl')
-      # auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
       auth_url_ssl   = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
@@ -124,7 +121,6 @@ describe TelefonicaHandle::Handle do
     it "handles ssl with validation connections just fine, too" do
       fog            = double('fog')
       handle         = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl-with-validation')
-      # auth_url_ssl   = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
       auth_url_ssl = nil;
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
@@ -166,7 +162,6 @@ describe TelefonicaHandle::Handle do
                                                       :ssl_cert_store  => "store_obj"}}
 
       handle           = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'ssl-with-validation', extra_options)
-      # auth_url_ssl     = TelefonicaHandle::Handle.auth_url("address", 5000, "https")
       auth_url_ssl     = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(
@@ -190,7 +185,6 @@ describe TelefonicaHandle::Handle do
     it "handles connections with region just fine" do
       fog      = double('fog')
       handle   = TelefonicaHandle::Handle.new("dummy", "dummy", "address", 5000, 'v2', 'non-ssl', :region => 'RegionOne')
-      # auth_url = TelefonicaHandle::Handle.auth_url("address", 5000, "http")
       auth_url = nil
 
       expect(TelefonicaHandle::Handle).to receive(:raw_connect).with(

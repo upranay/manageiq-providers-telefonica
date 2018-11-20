@@ -23,16 +23,6 @@ describe ManageIQ::Providers::Telefonica::CloudManager::Template do
       end
     end
 
-    # context 'with incorrect data' do
-    #   [Excon::Error::BadRequest, ArgumentError].map do |error|
-    #     it "should raise error when #{error}" do
-    #       allow(service).to receive(:create_image).with(image_attributes).and_raise(error)
-    #       expect do
-    #         subject.class.create_image(ems, image_attributes)
-    #       end.to raise_error(MiqException::MiqTelefonicaApiRequestError)
-    #     end
-    #   end
-    # end
   end
 
   context 'when update_image' do
@@ -64,11 +54,5 @@ describe ManageIQ::Providers::Telefonica::CloudManager::Template do
       subject.delete_image
     end
 
-    # it 'should raise error' do
-    #   allow(service).to receive(:delete_image).with(template_telefonica.ems_ref).and_raise(Excon::Error::BadRequest)
-    #   expect do
-    #     subject.delete_image
-    #   end.to raise_error(MiqException::MiqTelefonicaApiRequestError)
-    # end
   end
 end

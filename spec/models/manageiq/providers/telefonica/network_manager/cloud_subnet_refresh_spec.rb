@@ -14,7 +14,6 @@ describe ManageIQ::Providers::Telefonica::NetworkManager::CloudSubnet do
       expect(CloudNetwork.count).to eq(1)
       expect(NetworkPort.count).to eq(1)
       expect(NetworkRouter.count).to eq(1)
-      # expect(CloudSubnet.first.network_router_id).to eq(NetworkRouter.first.id)
 
       # simulate the interface between a router and subnet being removed on the OSP side.
       allow_any_instance_of(ManageIQ::Providers::Telefonica::Inventory::Collector::NetworkManager).to receive(:network_ports).and_return([])
@@ -36,7 +35,6 @@ describe ManageIQ::Providers::Telefonica::NetworkManager::CloudSubnet do
       expect(CloudNetwork.count).to eq(1)
       expect(NetworkPort.count).to eq(1)
       expect(NetworkRouter.count).to eq(1)
-      # expect(CloudSubnet.first.network_router_id).to eq(NetworkRouter.first.id)
 
       target = InventoryRefresh::Target.new(
         :manager     => @ems.parent_manager,
@@ -51,7 +49,6 @@ describe ManageIQ::Providers::Telefonica::NetworkManager::CloudSubnet do
       expect(CloudNetwork.count).to eq(1)
       expect(NetworkPort.count).to eq(1)
       expect(NetworkRouter.count).to eq(1)
-      # expect(CloudSubnet.first.network_router_id).to eq(NetworkRouter.first.id)
       ::Settings.ems_refresh.telefonica_network.allow_targeted_refresh = false
     end
 

@@ -163,17 +163,9 @@ describe ManageIQ::Providers::Telefonica::CloudManager do
   context "provider hooks" do
     it "related EmsTelefonica and ProviderTelefonica are left around on EmsTelefonicaCloud destroy" do
       @ems_cloud = FactoryGirl.create(:ems_telefonica_with_authentication)
-      # @ems.provider.cloud_ems << @ems_cloud
-
-      # compare they both use the same provider
-      # expect(@ems_cloud.provider).to eq(@ems.provider)
 
       @ems_cloud.destroy
       expect(ManageIQ::Providers::Telefonica::CloudManager.count).to eq 0
-
-      # Ensure the ems infra and provider still stays around
-      # expect(ManageIQ::Providers::Telefonica::Provider.count).to eq 0
-      # expect(ManageIQ::Providers::Telefonica::InfraManager.count).to eq 1
     end
   end
 
@@ -205,19 +197,9 @@ describe ManageIQ::Providers::Telefonica::CloudManager do
     before do
       @provider = FactoryGirl.create(:provider_telefonica, :name => "undercloud")
       @cloud = FactoryGirl.create(:ems_telefonica, :name => "overcloud", :provider => @provider)
-      # @infra = FactoryGirl.create(:ems_telefonica_infra_with_stack, :name => "undercloud", :provider => @provider)
       @az = FactoryGirl.create(:availability_zone_telefonica, :ext_management_system => @cloud, :name => "nova")
-      # @cluster = FactoryGirl.create(:ems_cluster_telefonica, :ext_management_system => @infra, :name => "BlockStorage")
-      # @host = FactoryGirl.create(:host_telefonica_infra)
-      # @cluster.hosts << @host
       expect(@az.block_storage_disk_usage).to eq(0)
     end
-
-    # it "block storage disk capacity" do
-    #   expect(@az.block_storage_disk_capacity).to eq(0)
-    #   FactoryGirl.create(:hardware, :disk_capacity => "7", :host => @host)
-    #   expect(@az.block_storage_disk_capacity).to eq(7)
-    # end
 
   end
 
