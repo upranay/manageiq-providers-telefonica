@@ -16,6 +16,10 @@ module ManageIQ::Providers
     def ems_inv_to_hashes
       get_volumes
     end
+    
+    def volumes
+      @volumes ||= @cinder_service&.handled_list(:volumes)
+    end
 
     def get_volumes
       process_collection(volumes, :cloud_volumes) { |volume| parse_volume(volume) }
