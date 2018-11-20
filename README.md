@@ -2,11 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-telefonica.svg)](http://badge.fury.io/rb/manageiq-providers-telefonica)
 [![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-telefonica.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-telefonica)
-[![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-telefonica.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-telefonica)
-[![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-telefonica/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-telefonica/coverage)
-[![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-telefonica.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-telefonica)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-telefonica/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-telefonica/master)
-
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-telefonica?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-providers-telefonica)
 
