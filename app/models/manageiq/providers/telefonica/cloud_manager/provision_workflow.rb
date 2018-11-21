@@ -83,12 +83,6 @@ class ManageIQ::Providers::Telefonica::CloudManager::ProvisionWorkflow < ::MiqPr
     end
   end
 
-  # C2C comment
-  # def validate_cloud_network(field, values, dlg, fld, value)
-  #   return nil if allowed_cloud_networks.length <= 1
-  #   validate_placement(field, values, dlg, fld, value)
-  # end
-
   def validate_cloud_network(field, values, dlg, fld, value)
     if values[:placement_auto] && values[:placement_auto][0] == true
       raise MiqException::MiqProvisionError, "'Environment/Choose Automatically' is not supported in Telefonica Provider"
